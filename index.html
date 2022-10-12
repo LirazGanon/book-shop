@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
+
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap"rel="stylesheet">
+    <title>Puki Shop</title>
+</head>
+
+<body onload="onInit()">
+    <section class="header">
+        <img src="img/svg/logo3.svg" alt="">
+        <section class="book-filter">
+            <h2>Filter</h2>
+            <select class="filter-name-select" onchange="onSetFilterBy({name: this.value})">
+            </select>
+            
+            <label>
+                Max Price:
+                <input type="range" min="5" max="50" value="45" class="filter-price-range"
+                    onchange="this.title=this.value;onSetFilterBy({maxPrice: this.value})" />
+            </label>
+            <hr />
+            <div>
+                Sort by:
+                <select class="sort-by" onchange="onSetSortBy()">
+                    <option value="">Select Sorting</option>
+                    <option value="name">By Name</option>
+                    <option value="price">Price</option>
+                </select>
+                <label>
+                    Descending
+                    <input class="sort-desc" type="checkbox" oninput="onSetSortBy()" />
+                </label>
+            </div>
+            <div class="header-buttons">
+                <button title="Add Book" onclick="onAddBook()">Add Book</button>
+                <button onclick="onNextPage()">Next Page</button>
+            </div>
+            </section>
+    </section>
+    <section class="books-container"></section>
+
+    <script src="js/services/util.service.js"></script>
+    <script src="js/services/storage.service.js"></script>
+    <script src="js/services/book.service.js"></script>
+    <script src="js/books.controller.js"></script>
+</body>
+
+</html>
